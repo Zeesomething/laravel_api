@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('fans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_fan');
+            $table->timestamps();
+        });
+        Schema::create('fan_klub', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_fan');
+            $table->unsignedBigInteger('id_klub');
+
+            $table->foreign('id_fan')->references('id')->on('fans')->onDelete('cascade');
+            $table->foreign('id_klub')->references('id')->on('klubs')->onDelete('cascade');
             $table->timestamps();
         });
     }

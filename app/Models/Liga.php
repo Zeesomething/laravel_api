@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Liga extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nama_liga', 'negara'];
+
+    public function klub()
+    {
+        return $this->hasMany(Klub::class, 'id_liga');
+    }
 }

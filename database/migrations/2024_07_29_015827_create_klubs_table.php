@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('klubs', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_klub');
+            $table->string('logo')->nullable();
+            $table->unsignedBigInteger('id_liga');
+            $table->foreign('id_liga')->references('id')->on('ligas')->onDelete('cascade');
             $table->timestamps();
         });
     }
